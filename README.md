@@ -11,6 +11,6 @@ http://localhost:30000/getCookies
 http://localhost:30000/setCookie/test
 
 
-http://localhost:3000/clearCookie/test
+http://localhost:30000/clearCookie/test
 
 
