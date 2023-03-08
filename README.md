@@ -53,3 +53,16 @@ log(JSON.stringify(app.endpoints.http.get({path: "http://127.0.0.1:30000/getCook
 ```javascript
 log(JSON.stringify(app.endpoints.http.get({path: "http://127.0.0.1:30000/setCookie/cookie1", forceDisableCookies: "false"})))
 ```
+
+```javascript
+log(JSON.stringify(app.endpoints.http.get({path: "http://localhost:30001/redirect1"})))
+```
+
+```javascript
+log(JSON.stringify(app.endpoints.http.get({path: "http://localhost:30001/redirect1", removeRefererHeaderOnRedirect: true})))
+```
+
+
+```javascript
+log(JSON.stringify(app.endpoints.http.get({path: "http://localhost:30001/redirectOut", followAuthorizationHeader: "true", headers:{"Authorization" : "Bearer token"}, fullResponse: "true"})))
+```

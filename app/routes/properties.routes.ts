@@ -1,6 +1,8 @@
+import { Express } from "express-serve-static-core";
+
 let crypto = require('crypto');
 
-export function properties (app: { get: (arg0: string, arg1: { (req: any, res: any): void; (req: any, res: any): void; (req: any, res: any): void; (req: any, res: any): void; (_: any, res: any): void; }) => void; }) {
+export function properties (app: Express) {
     
     app.get('/setCookie/:name',function(req, res){
         const cookie_name= req.params.name;
@@ -29,8 +31,36 @@ export function properties (app: { get: (arg0: string, arg1: { (req: any, res: a
         }, time * 1000);
     });
     
-    app.get('/redirect',function(_, res){
+    app.get('/redirect',function(_: any, res){
         res.redirect('/');
+    });
+
+    app.get('/redirectInfinite',function(_: any, res){
+        setTimeout(function() {
+            res.redirect('/redirectInfinite');
+        }, 1000);
+    });
+
+    app.get('/redirectOut', function(req, res){
+        res.send("Redirected 1 time");
+    });
+
+    app.post('/redirectPost', function(_, res){
+        res.status(200).send("Redirected For Post");
+    });
+
+    app.get('/redirectPost', function(_, res){
+        res.status(404).send("Redirected For Post 404 ERROR");
+    });
+
+    app.get('/redirect2', function(req, res){
+        console.log(req.headers.referer);
+        res.redirect('http://localhost:30001/redirect3');
+    });
+
+    app.get('/redirectFinal', function(req, res){
+        console.log(req.headers.referer);
+        res.redirect('http://localhost:30001/methodFinal');
     });
 
     return app;
