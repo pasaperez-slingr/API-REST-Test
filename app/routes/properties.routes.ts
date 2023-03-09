@@ -41,17 +41,17 @@ export function properties (app: Express) {
         }, 1000);
     });
 
-    app.get('/redirectOut', function(req, res){
+    app.get('/redirectOnce', function(req, res){
         res.send("Redirected 1 time");
     });
 
-    app.post('/redirectPost', function(_, res){
-        res.status(200).send("Redirected For Post");
-    });
-
-    app.get('/redirectPost', function(_, res){
-        res.status(404).send("Redirected For Post 404 ERROR");
-    });
+    app.get('/redirectMethod', function(_, res){ res.redirect('http://localhost:30001/method'); });
+    app.post('/redirectMethod', function(_, res){ res.redirect('http://localhost:30001/method'); });
+    app.put('/redirectMethod', function(_, res){ res.redirect('http://localhost:30001/method'); });
+    app.patch('/redirectMethod', function(_, res){ res.redirect('http://localhost:30001/method'); });
+    app.delete('/redirectMethod', function(_, res){ res.redirect('http://localhost:30001/method'); });
+    app.head('/redirectMethod', function(_, res){ res.redirect('http://localhost:30001/method'); });
+    app.options('/redirectMethod', function(_, res){ res.redirect('http://localhost:30001/method'); });
 
     app.get('/redirect2', function(req, res){
         console.log(req.headers.referer);

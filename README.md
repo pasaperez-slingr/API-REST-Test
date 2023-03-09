@@ -64,5 +64,9 @@ log(JSON.stringify(app.endpoints.http.get({path: "http://localhost:30001/redirec
 
 
 ```javascript
-log(JSON.stringify(app.endpoints.http.get({path: "http://localhost:30001/redirectOut", followAuthorizationHeader: "true", headers:{"Authorization" : "Bearer token"}, fullResponse: "true"})))
+log(JSON.stringify(app.endpoints.http.get({path: "http://localhost:30001/redirectOnce", followAuthorizationHeader: "true", headers:{"Authorization" : "Bearer token"}, fullResponse: "true"})))
+```
+
+```javascript
+log(JSON.stringify(app.endpoints.http.post({path: "http://localhost:30001/redirectMethod", followOriginalHttpMethod: "true"})))
 ```
